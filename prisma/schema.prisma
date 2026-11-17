@@ -1,0 +1,70 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum OrderStatus {
+  PENDING
+  SUCCEEDED
+  CANCELED
+  FAILED
+}
+
+enum PaymentStatus {
+  PENDING
+  SUCCEEDED
+  CANCELED
+}
+
+enum EntitlementStatus {
+  ACTIVE
+  EXPIRED
+  REVOKED
+}
+
+/// Цены и состав тарифов живут в src/config/pricing.ts — единственном источнике истины.
+/// В заказе сохраняется снимок суммы на момент оплаты.
+model Order {
+  id          String        @id @default(cuid())
+  planId      String
+  amount      Int
+  currency    String        @default("RUB")
+  status      OrderStatus   @default(PENDING)
+  createdAt   DateTime      @default(now())
+  updatedAt   DateTime      @updatedAt
+  payments    Payment[]
+  entitlement Entitlement?
+
+  @@index([status, createdAt])
+}
+
+model Payment {
+  id                String        @id @default(cuid())
+  orderId           String
+  order             Order         @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  provider          String        @default("yookassa")
+  providerPaymentId String        @unique
+  status            PaymentStatus @default(PENDING)
+  confirmationUrl   String?
+  idempotenceKey    String        @unique
+  createdAt         DateTime      @default(now())
+  updatedAt         DateTime      @updatedAt
+
+  @@index([orderId])
+}
+
+/// Право доступа. Создаётся один раз при успешной оплате (idempotent).
+model Entitlement {
+  id          String            @id @default(cuid())
+  orderId     String            @unique
+  order       Order             @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  planId      String
+  status      EntitlementStatus @default(ACTIVE)
+  activatedAt DateTime          @default(now())
+  expiresAt   DateTime?
+  createdAt   DateTime          @default(now())
+}
