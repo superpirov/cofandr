@@ -68,13 +68,13 @@ export function Header() {
           className="absolute left-1/2 hidden -translate-x-1/2 items-center gap-8 lg:flex"
         >
           {site.nav.map((item) => (
-            <a
+            <Link
               key={item.href}
               href={item.href}
               className="text-[13px] text-muted transition-colors duration-200 hover:text-fg"
             >
               {item.label}
-            </a>
+            </Link>
           ))}
         </nav>
 
@@ -119,14 +119,14 @@ export function Header() {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.04 * index, duration: 0.3 }}
                 >
-                  <a
+                  <Link
                     href={item.href}
                     onClick={() => setOpen(false)}
                     className="flex items-center justify-between border-b border-line py-5 text-2xl tracking-[-0.02em]"
                   >
                     {item.label}
                     <ArrowUpRight className="size-5 text-dim" />
-                  </a>
+                  </Link>
                 </motion.div>
               ))}
               <div className="mt-8">

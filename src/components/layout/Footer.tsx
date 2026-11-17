@@ -63,6 +63,7 @@ export function Footer() {
                 <li key={item.href}>
                   <Link
                     href={item.href}
+                    prefetch={false}
                     className="text-muted transition-colors hover:text-fg"
                   >
                     {item.label}
@@ -70,12 +71,12 @@ export function Footer() {
                 </li>
               ))}
               <li>
-                <a
+                <Link
                   href="/#pricing"
                   className="text-muted transition-colors hover:text-fg"
                 >
                   Оплата и возврат
-                </a>
+                </Link>
               </li>
             </ul>
           </nav>

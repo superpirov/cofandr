@@ -5,6 +5,8 @@ import { ArrowUpRight } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { track } from "@/lib/analytics";
 
+const STATIC_DEMO = process.env.NEXT_PUBLIC_STATIC_DEMO === "1";
+
 export function PaymentButton({
   planId,
   planName,
@@ -18,6 +20,19 @@ export function PaymentButton({
 }) {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+
+  if (STATIC_DEMO) {
+    return (
+      <div className={className}>
+        <Button variant={variant} size="lg" disabled className="w-full">
+          Демо-стенд
+        </Button>
+        <p className="mt-3 text-center text-xs leading-relaxed text-dim">
+          Онлайн-оплата отключена в статической версии сайта.
+        </p>
+      </div>
+    );
+  }
 
   async function handleClick() {
     setError(null);

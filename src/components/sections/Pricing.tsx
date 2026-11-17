@@ -120,6 +120,7 @@ export function Pricing() {
             принимаете условия{" "}
             <Link
               href="/legal/offer"
+              prefetch={false}
               className="text-muted underline underline-offset-4 hover:text-gold"
             >
               публичной оферты
@@ -127,6 +128,7 @@ export function Pricing() {
             и{" "}
             <Link
               href="/legal/privacy"
+              prefetch={false}
               className="text-muted underline underline-offset-4 hover:text-gold"
             >
               политики конфиденциальности

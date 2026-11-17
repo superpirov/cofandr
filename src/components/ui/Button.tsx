@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import Link from "next/link";
 import { cn } from "@/lib/utils";
 
 const variants = {
@@ -51,7 +52,12 @@ export function Button({
   );
 
   if (href) {
-    return (
+    // Link keeps internal URLs working under a basePath (GitHub Pages).
+    return href.startsWith("/") ? (
+      <Link href={href} className={classes} onClick={onClick} {...rest}>
+        {children}
+      </Link>
+    ) : (
       <a href={href} className={classes} onClick={onClick} {...rest}>
         {children}
       </a>

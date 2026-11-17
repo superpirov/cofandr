@@ -78,6 +78,7 @@ export default async function LegalPage({
                 <li key={item.slug}>
                   <Link
                     href={`/legal/${item.slug}`}
+                    prefetch={false}
                     className="text-muted underline underline-offset-4 transition-colors hover:text-gold"
                   >
                     {item.shortTitle}

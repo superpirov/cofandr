@@ -199,6 +199,16 @@ Unit-тесты (`tests/payment-logic.test.ts`): сумма в формате п
 
 `/api/*` работают на Node runtime. HTTPS обязателен.
 
+### GitHub Pages — только витрина
+
+GitHub Pages отдаёт статические файлы и не запускает Node.js, поэтому API оплаты, Prisma и вебхук ЮKassa там работать не могут. В репозитории есть отдельная сборка-витрина: `.github/workflows/pages.yml` выкладывает лендинг на `https://superpirov.github.io/cofandr/` без приёма оплаты (кнопки тарифов показывают «Демо-стенд»).
+
+Включение: **Settings → Pages → Build and deployment → Source: GitHub Actions**, затем запустите workflow «Deploy static preview to GitHub Pages» (или сделайте push в `main`).
+
+- `NEXT_BASE_PATH=/cofandr` должен совпадать с именем репозитория; для своего домена уберите его в workflow и в `next.config.ts`.
+- Статическая сборка использует `STATIC_EXPORT=1` и `NEXT_PUBLIC_STATIC_DEMO=1`; обычный `npm run build` для Vercel/сервера не меняется.
+- Для реальных продаж используйте Vercel/Node-хостинг: витрина на Pages оплату не принимает.
+
 ---
 
 ## 8. Чек-лист материалов от заказчика
