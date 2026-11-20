@@ -17,8 +17,8 @@ export function Footer() {
               </span>
             </Link>
             <p className="mt-5 max-w-[300px] text-sm leading-relaxed text-muted">
-              Авторская программа {site.courseName}. Практика, система и
-              обратная связь вместо случайных решений.
+              «КофеСтарт» — практическая программа по запуску кофейни от
+              владельцев 8+ действующих точек.
             </p>
             <div className="mt-6 flex flex-col gap-1 text-sm">
               <a
@@ -43,12 +43,12 @@ export function Footer() {
             <ul className="mt-5 space-y-3 text-sm">
               {site.nav.map((item) => (
                 <li key={item.href}>
-                  <a
+                  <Link
                     href={item.href}
                     className="text-muted transition-colors hover:text-fg"
                   >
                     {item.label}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>

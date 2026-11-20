@@ -3,7 +3,7 @@ import { Container } from "@/components/layout/Container";
 import { Button } from "@/components/ui/Button";
 import { Badge } from "@/components/ui/Badge";
 import { Reveal } from "@/components/ui/Reveal";
-import { ExpertPortrait } from "@/components/sections/ExpertPortrait";
+import { FounderCard } from "@/components/sections/FounderCard";
 import { HeroTitle } from "@/components/sections/HeroTitle";
 import { hero } from "@/config/content";
 import { site } from "@/config/site";
@@ -34,10 +34,6 @@ export function Hero() {
               <p className="eyebrow flex flex-wrap items-center gap-3">
                 <span aria-hidden="true" className="h-px w-6 bg-gold/60" />
                 {hero.eyebrow}
-                <span className="text-dim">·</span>
-                <span className="normal-case tracking-normal text-muted">
-                  {site.expertName}
-                </span>
               </p>
             </Reveal>
 
@@ -93,17 +89,22 @@ export function Hero() {
               aria-hidden="true"
               className="absolute -right-3 -top-3 hidden h-full w-full rounded-[28px] border border-gold/15 sm:block"
             />
-            <ExpertPortrait
-              priority
-              className="aspect-[4/5] w-full max-w-[520px] lg:ml-auto"
-            />
+            <div className="grid grid-cols-2 gap-3 sm:gap-4">
+              {site.founders.map((founder, index) => (
+                <FounderCard
+                  key={founder.name}
+                  founder={founder}
+                  priority={index === 0}
+                />
+              ))}
+            </div>
             <div className="absolute -left-2 top-1/2 hidden -translate-y-1/2 items-center gap-3 rounded-full border border-line-strong bg-bg/80 px-4 py-2.5 backdrop-blur-md sm:flex lg:-left-6">
               <span aria-hidden="true" className="size-1.5 rounded-full bg-gold" />
               <Badge variant="gold" className="border-0 bg-transparent p-0">
                 {hero.badge}
               </Badge>
             </div>
-            <div className="mt-4 flex items-center justify-between gap-4 lg:max-w-[520px] lg:ml-auto">
+            <div className="mt-4 flex items-center justify-between gap-4">
               <p className="text-[11px] uppercase tracking-[0.2em] text-dim">
                 {hero.portraitCaption}
               </p>

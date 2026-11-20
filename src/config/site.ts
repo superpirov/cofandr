@@ -1,27 +1,40 @@
+export type Founder = {
+  name: string;
+  role: string;
+  /** Положите PNG в /public/images/founders/ — при отсутствии файла показывается монограмма. */
+  photo: string;
+  monogram: string;
+};
+
 export const site = {
-  /** Рабочее название бренда. Заменить на реальное имя/логотип эксперта. */
-  name: "COFANDR",
-  /** TODO: заменить на реальное имя эксперта. */
-  expertName: "[ИМЯ ЭКСПЕРТА]",
-  expertRole: "Автор программы",
-  /** TODO: положить фото в /public/images/expert.jpg (вертикальное, 4:5) и указать путь здесь. */
-  expertPhoto: null as string | null,
-  expertPhotoAlt: "Портрет автора программы",
-  /** Монограмма для портрета-заглушки, пока нет фото. */
-  monogram: "ИЭ",
-  /** TODO: заменить на реальное название курса. */
-  courseName: "[НАЗВАНИЕ КУРСА]",
-  /** TODO: заменить на реальные контакты. */
+  name: "КофеСтарт",
+  courseName: "КофеСтарт",
+  foundersLine: "Руслан Даудов и Валентин Сенькин",
+  founders: [
+    {
+      name: "Руслан Даудов",
+      role: "Сооснователь «КофеСтарт»",
+      photo: "/images/founders/ruslan-daudov.png",
+      monogram: "РД",
+    },
+    {
+      name: "Валентин Сенькин",
+      role: "Сооснователь «КофеСтарт»",
+      photo: "/images/founders/valentin-senkin.png",
+      monogram: "ВС",
+    },
+  ] satisfies Founder[],
+  /** TODO: заменить на реальные контакты поддержки. */
   email: "hello@example.com",
   telegram: "https://t.me/username",
   telegramLabel: "@username",
   url: (process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000").replace(/\/$/, ""),
   description:
-    "Авторская практическая программа: система, практика и обратная связь вместо разрозненных курсов и случайных решений.",
+    "Практическая программа по запуску кофейни от владельцев 8+ действующих точек: концепция, локация, документы, оборудование, барная карта и финансовая модель.",
   nav: [
-    { href: "/#about", label: "Об эксперте" },
+    { href: "/#about", label: "Основатели" },
     { href: "/#program", label: "Программа" },
-    { href: "/#results", label: "Результаты" },
+    { href: "/#results", label: "Опыт" },
     { href: "/#pricing", label: "Тарифы" },
     { href: "/#faq", label: "FAQ" },
   ],
@@ -39,5 +52,3 @@ export const site = {
     email: "hello@example.com",
   },
 } as const;
-
-export type SiteConfig = typeof site;

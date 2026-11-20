@@ -19,7 +19,7 @@ const cormorant = Cormorant_Garamond({
   display: "swap",
 });
 
-const title = `${site.name} — авторская программа`;
+const title = `${site.name} — запуск кофейни с нуля`;
 const description = site.description;
 
 export const metadata: Metadata = {
@@ -31,9 +31,10 @@ export const metadata: Metadata = {
   description,
   applicationName: site.name,
   keywords: [
-    "онлайн-курс",
-    "авторская программа",
-    "обучение",
+    "запуск кофейни",
+    "кофейный бизнес",
+    "обучение открытию кофейни",
+    "кофейня с нуля",
     site.name,
   ],
   alternates: { canonical: "/" },
@@ -49,7 +50,7 @@ export const metadata: Metadata = {
         url: "/opengraph-image",
         width: 1200,
         height: 630,
-        alt: `${site.name} — авторская программа`,
+        alt: `${site.name} — запуск кофейни с нуля`,
       },
     ],
   },

@@ -2,7 +2,8 @@ import { Check } from "lucide-react";
 import { Container } from "@/components/layout/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Reveal } from "@/components/ui/Reveal";
-import { ExpertPortrait } from "@/components/sections/ExpertPortrait";
+import { FounderCard } from "@/components/sections/FounderCard";
+import { site } from "@/config/site";
 import { about } from "@/config/content";
 
 export function About() {
@@ -11,7 +12,11 @@ export function About() {
       <Container>
         <div className="grid gap-12 lg:grid-cols-[0.85fr_1.15fr] lg:gap-20">
           <Reveal className="relative">
-            <ExpertPortrait className="aspect-[4/5] w-full lg:sticky lg:top-28" />
+            <div className="grid grid-cols-2 gap-3 lg:sticky lg:top-28">
+              {site.founders.map((founder) => (
+                <FounderCard key={founder.name} founder={founder} />
+              ))}
+            </div>
           </Reveal>
 
           <div>

@@ -42,7 +42,7 @@ export function Program() {
                         {module.title}
                       </span>
                       <span className="mt-1.5 block text-[11px] uppercase tracking-[0.14em] text-dim">
-                        {module.lessonsCount} уроков
+                        Практический модуль
                       </span>
                     </span>
                   </span>
@@ -78,6 +78,17 @@ export function Program() {
                 ),
               }))}
             />
+            <div className="mt-4 rounded-[20px] border border-gold/20 bg-gold/[0.04] p-6 sm:p-7">
+              <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-gold">
+                Дополнительно
+              </p>
+              <p className="mt-3 text-[15px] font-medium">
+                {program.bonus.title}
+              </p>
+              <p className="mt-2 text-sm leading-relaxed text-muted">
+                {program.bonus.text}
+              </p>
+            </div>
             <div className="mt-8 lg:hidden">
               <Button href="#pricing" variant="gold" className="w-full sm:w-auto">
                 Выбрать тариф

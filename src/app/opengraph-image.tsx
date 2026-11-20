@@ -1,7 +1,7 @@
 import { ImageResponse } from "next/og";
 import { site } from "@/config/site";
 
-export const alt = `${site.name} — авторская программа`;
+export const alt = `${site.name} — запуск кофейни с нуля`;
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 export const dynamic = "force-static";
@@ -55,10 +55,10 @@ export default function OpenGraphImage() {
               fontWeight: 600,
             }}
           >
-            Premium expert program
+            Кофейня с нуля
           </div>
           <div style={{ fontSize: 28, color: "#a1a1aa", maxWidth: 720 }}>
-            Practice, system and feedback — instead of random decisions.
+            На опыте владельцев 8+ действующих точек
           </div>
         </div>
 
@@ -73,8 +73,8 @@ export default function OpenGraphImage() {
             color: "#71717a",
           }}
         >
-          <span>AUTHOR PROGRAM</span>
-          <span style={{ color: "#c7a56b" }}>ONLINE COURSE</span>
+          <span>8+ ДЕЙСТВУЮЩИХ ТОЧЕК</span>
+          <span style={{ color: "#c7a56b" }}>КОФЕЙНЫЙ БИЗНЕС</span>
         </div>
 
         <div

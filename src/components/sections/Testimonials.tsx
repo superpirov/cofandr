@@ -1,9 +1,15 @@
+import { Building2, MapPin, Quote, ShoppingBag } from "lucide-react";
 import { Container } from "@/components/layout/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Reveal } from "@/components/ui/Reveal";
-import { testimonials, testimonialsSection } from "@/config/testimonials";
+import {
+  proofPoints,
+  testimonials,
+  testimonialsSection,
+} from "@/config/testimonials";
 import { site } from "@/config/site";
-import { Quote } from "lucide-react";
+
+const proofIcons = [Building2, ShoppingBag, MapPin];
 
 export function Testimonials() {
   return (
@@ -40,32 +46,44 @@ export function Testimonials() {
             ))}
           </div>
         ) : (
-          <Reveal delay={0.08}>
-            <div className="relative mt-12 overflow-hidden rounded-[28px] border border-line bg-surface/40 px-6 py-14 text-center sm:px-12 sm:py-20">
-              <div
-                aria-hidden="true"
-                className="pointer-events-none absolute left-1/2 top-0 h-[300px] w-[600px] -translate-x-1/2 bg-[radial-gradient(ellipse_at_top,rgba(199,165,107,0.09),transparent_65%)]"
-              />
-              <Quote
-                className="relative mx-auto size-7 text-gold/50"
-                strokeWidth={1.2}
-              />
-              <p className="relative mx-auto mt-6 max-w-[560px] text-lg leading-relaxed text-fg/90 sm:text-xl">
-                Мы не публикуем выдуманные отзывы. Здесь появятся реальные
-                кейсы участников — с именами, работами и результатами.
-              </p>
-              <p className="relative mx-auto mt-5 max-w-[480px] text-sm leading-relaxed text-dim">
-                Уже прошёл программу? Поделись результатом на{" "}
+          <>
+            <div className="mt-12 grid gap-4 sm:grid-cols-3">
+              {proofPoints.map((point, index) => {
+                const Icon = proofIcons[index] ?? MapPin;
+                return (
+                  <Reveal key={point.title} delay={index * 0.06}>
+                    <article className="h-full rounded-[20px] border border-line bg-surface/40 p-6 transition-colors duration-300 hover:border-white/20 hover:bg-surface sm:p-7">
+                      <Icon
+                        className="size-5 text-gold/80"
+                        strokeWidth={1.5}
+                        aria-hidden="true"
+                      />
+                      <h3 className="mt-5 text-lg font-medium tracking-[-0.01em]">
+                        {point.title}
+                      </h3>
+                      <p className="mt-2 text-sm leading-relaxed text-muted">
+                        {point.text}
+                      </p>
+                    </article>
+                  </Reveal>
+                );
+              })}
+            </div>
+            <Reveal delay={0.12}>
+              <p className="mx-auto mt-8 max-w-[620px] text-center text-sm leading-relaxed text-dim">
+                Отзывы учеников появятся после первых потоков — мы не публикуем
+                выдуманные кейсы. Если вы уже запустили кофейню, поделитесь
+                результатом на{" "}
                 <a
                   href={`mailto:${site.email}`}
                   className="text-gold underline underline-offset-4"
                 >
                   {site.email}
-                </a>{" "}
-                — мы опубликуем историю с твоего согласия.
+                </a>
+                .
               </p>
-            </div>
-          </Reveal>
+            </Reveal>
+          </>
         )}
       </Container>
     </section>

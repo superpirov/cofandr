@@ -59,7 +59,7 @@ export function Header() {
             className="hidden h-4 w-px bg-line-strong sm:block"
           />
           <span className="hidden text-[11px] uppercase tracking-[0.18em] text-dim sm:block">
-            Авторская программа
+            Запуск кофейни
           </span>
         </Link>
 
